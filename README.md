@@ -4,7 +4,7 @@ This Java project simulates a simplified stock trading platform like RobinHood. 
 
 ---
 
-## 🚀 Features Implemented
+## Features Implemented
 
 ### ✅ Step 1: `DSEList.java`
 - Custom doubly linked list for storing `String` data.
@@ -102,8 +102,4 @@ new Step4_CommandParser().runCommandLineExchange(new SecuritiesExchange("GameSto
 - Command Parsing & Input Handling
 - Unit Testing with JUnit
 
----
-
-## 📚 Academic Integrity
-I made this product on my own time to educate.   Every decision and action follows academic honesty ideals.   There was no plagiarism, shared work, or AI-generated code.
 
