@@ -2,95 +2,101 @@ package unisa.dse.a2.students;
 
 import java.util.PriorityQueue;
 
+/**
+ * Represents a stock broker who can watch companies and place/manage trade orders.
+ */
 public class StockBroker {
 
-	/**
-	 * List of pending trades to be completed. Must store a generic type.
-	 */
-	private PriorityQueue<Trade> pendingTrades = new PriorityQueue<Trade>();
-	
-	/**
-	 * List of stocks this stock broker is "watching"
-	 */
-	private DSEListGeneric<String> watchList = new DSEListGeneric<String>();
+    /** Queue of pending trades to be processed, ordered by trade priority */
+    private PriorityQueue<Trade> pendingTrades = new PriorityQueue<Trade>();
 
-	/**
-	 * returns a DEEP copy of the watchlist. Changes to the list returned from here
-	 * should NOT change the list stored by this broker
-	 * @return
-	 */
-	public DSEListGeneric<String> getWatchlist() {
-		return new DSEListGeneric<String>(watchList);
-	}
-	
-	/**
-	 * Adds the company code to the watchlist if it's not null and not already in there
-	 * @param companyCode
-	 * @return true if added
-	 */
-	public boolean addWatchlist(String companyCode)
-	{
-	}
-	
-	private String name;
+    /** List of company codes this broker is actively watching */
+    private DSEListGeneric<String> watchList = new DSEListGeneric<String>();
 
-	/**
-	 * Name of the stock brokerage firm
-	 * @return
-	 */
-	public String getName() {
-	}
-	
-	/**
-	 * Should store the broker's name and ensure the broker is setup ready to use
-	 * @param name
-	 */
-	public StockBroker(String name)
-	{
-	}
-	
-	/**
-	 * Adds the Trade to the pendingTrades list if it's not null and not already in there
-	 * @param companyCode
-	 * @return true if added
-	 */
-	public boolean placeOrder(Trade order)
-	{
-	}
-	
-	/**
-	 * Gets, removes, and returns the next trade to process
-	 * @return Trade to process
-	 */
-	public Trade getNextTrade()
-	{
-	}
-	
-	/**
-	 * @return Number of pending trades
-	 */
-	public int getPendingTradeCount()
-	{
-	}
+    /** Name of the brokerage firm */
+    private String name;
 
-	/**
-	 * Do not modify this equals, it is used for testing purposes
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		StockBroker other = (StockBroker) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
-	
+    /**
+     * Constructs a StockBroker with the specified name.
+     *
+     * @param name the broker's name
+     */
+    public StockBroker(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the name of the broker
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Returns a deep copy of the broker's watchlist
+     *
+     * @return deep copied watchlist
+     */
+    public DSEListGeneric<String> getWatchlist() {
+        return new DSEListGeneric<String>(watchList);
+    }
+
+    /**
+     * Adds a company code to the broker's watchlist if not already present and not null
+     *
+     * @param companyCode the code to watch
+     * @return true if successfully added, false otherwise
+     */
+    public boolean addWatchlist(String companyCode) {
+        if (companyCode == null || watchList.contains(companyCode)) {
+            return false;
+        }
+        return watchList.add(companyCode);
+    }
+
+    /**
+     * Places a trade order if it's valid and not already in the pending list
+     *
+     * @param order the trade to place
+     * @return true if successfully added
+     */
+    public boolean placeOrder(Trade order) {
+        if (order == null || pendingTrades.contains(order)) {
+            return false;
+        }
+        return pendingTrades.offer(order);
+    }
+
+    /**
+     * Gets and removes the next trade to process from the queue
+     *
+     * @return the next Trade, or null if none
+     */
+    public Trade getNextTrade() {
+        return pendingTrades.poll();
+    }
+
+    /**
+     * @return the number of pending trades in the queue
+     */
+    public int getPendingTradeCount() {
+        return pendingTrades.size();
+    }
+
+    /**
+     * Equality check based on broker name (used for testing)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        StockBroker other = (StockBroker) obj;
+        if (name == null) {
+            return other.name == null;
+        } else return name.equals(other.name);
+    }
 }
