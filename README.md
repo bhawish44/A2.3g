@@ -1,6 +1,6 @@
 # GameStonk Share Trading Simulator
 
-This Java project simulates a simplified stock trading platform similar to real-world trading systems like RobinHood. It has been developed as part of a university assignment to reinforce concepts of data structures, object-oriented design, and algorithmic decision-making.
+This Java project simulates a simplified stock trading platform like RobinHood.   Data structures, object-oriented design, and algorithmic decision-making are explored in this university assignment.
 
 ---
 
@@ -105,9 +105,5 @@ new Step4_CommandParser().runCommandLineExchange(new SecuritiesExchange("GameSto
 ---
 
 ## 📚 Academic Integrity
-This project was independently developed for educational purposes. All logic and implementation follows academic honesty guidelines. No AI-generated code, plagiarism, or shared work with others was involved.
+I made this product on my own time to educate.   Every decision and action follows academic honesty ideals.   There was no plagiarism, shared work, or AI-generated code.
 
----
-
-## 📝 License
-This project is for educational purposes only. Do not reuse in other assignments or distribute without permission.
