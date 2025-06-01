@@ -102,7 +102,8 @@ public class SecuritiesExchange {
      * Placeholder for command line processing logic
      */
     public int runCommandLineExchange(Scanner sc) {
-        // Optional extension: implement CLI trade interface here
-        return 0;
+        Step4_CommandParser parser = new Step4_CommandParser();
+        return parser.runCommandLineExchange(this, sc);
     }
+
 }

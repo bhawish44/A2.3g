@@ -1,3 +1,10 @@
-trade
-trade
-exit
+LISTED AAPL Apple 100
+LISTED MSFT Microsoft 200
+BROKER GlobalTrade
+WATCH GlobalTrade AAPL
+WATCH GlobalTrade MSFT
+TRADE GlobalTrade AAPL 300
+TRADE GlobalTrade MSFT 150
+PROCESS
+PROCESS
+EXIT
