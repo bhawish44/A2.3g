@@ -1,51 +1,65 @@
 package unisa.dse.a2.students;
 
 /**
- * ===========================================================
- * 
- * You shouldn't need to make any changes in this class
- * 
- * We'll be using our own version for marking
- * 
- * Please see NodeGeneric for a "generic" version of this class to be used by NodeGeneric
- * 
- * ===========================================================
- * 
+ * Reference implementation of Node (non-generic)
+ * Used by DSEList only
  */
 public class Node {
 
-	public Node next;
-	public Node prev;
-	
-	private String t;
+    public Node next;
+    public Node prev;
+    private String t;
 
-	public Node(Node next, Node prev, String token) {
-		this.next = next;
-		this.prev = prev;
-		this.t = token;
-	}
+    public Node(Node next, Node prev, String token) {
+        this.next = next;
+        this.prev = prev;
+        this.t = token;
+    }
 
-	public String getString() {
-		return t;
-	}
+    public Node(String token) {
+        this(null, null, token);
+    }
 
-	@Override
-	public boolean equals(Object other) {
-		if (this == other)
-			return true;
-		if (other == null)
-			return false;
-		if (!(other instanceof Node))
-			return false;
+    public String getString() {
+        return t;
+    }
 
-		return t.equals(((Node)other).getString());
-	}
+    public void setString(String token) {
+        this.t = token;
+    }
 
-	@Override
-	public int hashCode() {
-		if ( t == null )
-			return 0;
-		return t.hashCode();
-	}
+    public Node getNext() {
+        return next;
+    }
 
+    public void setNext(Node next) {
+        this.next = next;
+    }
+
+    public Node getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Node prev) {
+        this.prev = prev;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other)
+            return true;
+        if (other == null)
+            return false;
+        if (!(other instanceof Node))
+            return false;
+
+        return t.equals(((Node) other).getString());
+    }
+
+    @Override
+    public int hashCode() {
+        if (t == null)
+            return 0;
+        return t.hashCode();
+    }
 }
